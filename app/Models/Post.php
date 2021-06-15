@@ -19,7 +19,7 @@ class Post extends Model
     // public function getRoutKeyName(){
     //     return 'slug';
     // }
-    //eager load relationship with existing model
+    //eager load relationship with default relationship
     protected $with=['author','category'];
     public function category(){
         //elequont relationships

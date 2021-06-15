@@ -4,7 +4,7 @@ if you want to get rid of with clause decleare as following in model
 class Post extends Model
 {   
     use HasFactory;
-    //eager load relationship with existing model
+    //eager load relationship with existing relationship
     protected $with=['author','category'];
     //While $fillable serves as a “white list” of attributes that should be mass assignable,
      //you may also choose to use $guarded. The $guarded property should contain an array of attributes
