@@ -40,3 +40,7 @@ storage->logs->laravel.log
 \Illuminate\Support\Facades\DB::listen(function ($query){
      logger($query->sql,$query->bindings);
  });
+
+
+ *********** Integrate Design with laravel *************
+ images in :public/
