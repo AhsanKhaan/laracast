@@ -47,7 +47,10 @@ Route::get('/', function () {
     //     logger($query->sql,$query->bindings);
     // });
         //eliminate n+1 using Post::with('category')->get
-    return view('posts', ["posts" => Post::latest()->with('category','author')->get()]);
+        \Illuminate\Support\Facades\DB::listen(function ($query){
+            logger($query->sql,$query->bindings);
+        });
+    return view('posts', ["posts" => Post::latest()->get()]);
 });
 Route::get('post/{post:slug}', function (Post $post) {
     
@@ -65,8 +68,12 @@ Route::get('post/{post:slug}', function (Post $post) {
 });
 
 Route::get('category/{category:slug}', function (Category $category) {
+
     return view('posts',["posts"=>$category->posts]);
+    //eager load relationship on existing model
+    //return view('posts',["posts"=>$category->posts->load(['author','category'])]);
 });
 Route::get('authors/{author:username}', function (User $author) {
+
     return view('posts',["posts"=>$author->posts]);
 });

@@ -1,13 +1,11 @@
-<?php
+if you want to get rid of with clause decleare as following in model
 
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
-{
+{   
     use HasFactory;
+    //eager load relationship with existing model
+    protected $with=['author','category'];
     //While $fillable serves as a “white list” of attributes that should be mass assignable,
      //you may also choose to use $guarded. The $guarded property should contain an array of attributes
      // that you do not want to be mass assignable. All other attributes not in the array will be mass assignable.
@@ -19,8 +17,7 @@ class Post extends Model
     // public function getRoutKeyName(){
     //     return 'slug';
     // }
-    //eager load relationship with existing model
-    protected $with=['author','category'];
+    
     public function category(){
         //elequont relationships
         //one-to-one:hasOne
@@ -31,3 +28,15 @@ class Post extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 }
+
+
+if you want to exclude on new relationship model data then use in web.php
+Post::latest()->without(['category','author'])->get()]
+//eager relationship on existing model 
+posts->author->load(['category','author'])
+
+//debugging sql queries on each page
+storage->logs->laravel.log
+\Illuminate\Support\Facades\DB::listen(function ($query){
+     logger($query->sql,$query->bindings);
+ });
