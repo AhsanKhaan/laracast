@@ -44,3 +44,9 @@ storage->logs->laravel.log
 
  *********** Integrate Design with laravel *************
  images in :public/
+ ************iteration skiping (Skips the very first post)************
+ @foreach($post->skip(1) as $post)
+
+ @endforeach
+ *************humans readable time e.g:4 hours ago etc***
+ $post->create_at->DiffForHumans()

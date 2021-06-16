@@ -10,20 +10,14 @@
             <p>{!! $post->body !!}</p>
         </article>
     @endforeach --}}
-        @include('includes._post-header');
+    @include('includes._post-header');
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-        <x-post-featured-card/>
-        <div class="lg:grid lg:grid-cols-2">
-            <x-post-card/>
-            <x-post-card/>
-        </div>
+        
+        @if ($posts->count())
+            <x-posts-grid :posts="$posts"/>
+        @else
+            <p>No post have published Yet</p>
+        @endif
 
-        <div class="lg:grid lg:grid-cols-3">
-            
-
-           <x-post-card/>
-           <x-post-card/>
-           <x-post-card/>
-        </div>
     </main>
 @endsection
