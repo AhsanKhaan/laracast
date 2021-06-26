@@ -47,7 +47,7 @@ Route::get('/', function () {
     //     logger($query->sql,$query->bindings);
     // });
         //eliminate n+1 using Post::with('category')->get
-    return view('posts', ["posts" => Post::latest()->get()]);
+    return view('posts', ["posts" => Post::latest()->get(),"categories"=>Category::all()]);
 });
 Route::get('post/{post:slug}', function (Post $post) {
     
