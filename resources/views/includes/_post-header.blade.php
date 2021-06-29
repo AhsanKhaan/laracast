@@ -27,9 +27,11 @@
                     {{ isset($currentCategory)?$currentCategory->name:'Categories' }}
                 </button>
                 <div x-show="show">
-                    <a href="/" class="block text-left text-sm leading-6 hover:bg-gray-300">all</a>
+                    <a href="/" class="block text-left text-sm leading-6 hover:bg-blue-500">all</a>
                     @foreach ($categories as $category)
-                    <a href="/category/{{ $category->slug }}" class="block text-left text-sm leading-6 hover:bg-gray-300">{{ ucwords($category->name) }}</a>    
+                    <a href="/category/{{ $category->slug }}" class="block text-left text-sm leading-6 hover:bg-gray-300
+                        {{ isset($currentCategory)&& $currentCategory->is($category) ?'bg-blue-500 text-white':'' }}
+                        ">{{ ucwords($category->name) }}</a>    
                     @endforeach
                     
                 </div>
