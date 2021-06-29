@@ -66,7 +66,10 @@ Route::get('post/{post:slug}', function (Post $post) {
 
 Route::get('category/{category:slug}', function (Category $category) {
 
-    return view('posts',["posts"=>$category->posts]);
+    return view('posts',["posts"=>$category->posts,
+                "categories"=>Category::all(),
+                "currentCategory"=>$category
+    ]);
     //eager load relationship on existing model
     //return view('posts',["posts"=>$category->posts->load(['author','category'])]);
 });

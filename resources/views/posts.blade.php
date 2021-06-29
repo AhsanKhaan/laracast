@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    {{-- @foreach ($posts as $post)
+    {{--  @foreach ($posts as $post)
         
         <article class="{{ $loop->even ? 'even' : '' }}">
             <a href="/post/{{ $post->slug }}">
